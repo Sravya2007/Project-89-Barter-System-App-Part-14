@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, StyleSheet, Text, Image, TouchableOpacity,TextInput, Alert, Modal, ScrollView, KeyboardAvoidingView } from 'react-native';
+import { View, StyleSheet, Text, Image, ScrollView, KeyboardAvoidingView, Alert, Modal, TouchableOpacity, TextInput } from 'react-native';
 import db from '../config';
 import firebase from 'firebase';
 
@@ -54,8 +54,8 @@ export default class WelcomeScreen extends Component {
 userLogin = (emailId, password)=>{
    firebase.auth().signInWithEmailAndPassword(emailId, password)
    .then(()=>{
-     return Alert.alert("User login succesful")
-   })
+    this.props.navigation.navigate('HomeScreen')
+    })
    .catch((error)=> {
      var errorCode = error.code;
      var errorMessage = error.message;
@@ -214,10 +214,10 @@ showModal = () =>{
          </TouchableOpacity>
 
          <TouchableOpacity
-           style={styles.button}
-           onPress={()=>this.setState({
+          style={styles.button}
+          onPress={()=>this.setState({
               isModalVisible:true
-              })
+            })
             }
            >
            <Text style={styles.buttonText}>Sign Up</Text>
