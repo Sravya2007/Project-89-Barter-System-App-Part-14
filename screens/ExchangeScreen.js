@@ -4,7 +4,7 @@ import db from '../config';
 import firebase from 'firebase';
 import Header from '../components/Header';
 
-export default class BookRequestScreen extends React.Component {
+export default class ExchangeScreen extends React.Component {
     constructor() {
         super();
         this.state ={
