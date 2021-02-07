@@ -14,13 +14,19 @@ export default class ExchangeScreen extends React.Component {
         }
     }
 
+    createUniqueId() {
+        return Math.random().toString(36).substring(7)
+    }
+
     addItem = (itemName, description) =>{
         var userName = this.state.userId
+        var randomRequestId = this.createUniqueId()
 
         db.collection("exchange_requests").add({
             "username": userName,
             "item_name": itemName,
-            "description": description
+            "description": description,
+            request_id: randomRequestId
         })
 
         this.setState({
@@ -114,7 +120,7 @@ const styles = StyleSheet.create({
       shadowRadius: 10.32,
       elevation: 16,
       marginTop:20
-      },
+      }
     }
   )
   

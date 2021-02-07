@@ -15,6 +15,9 @@ const switchNavigator = createSwitchNavigator({
   SignUpLoginScreen: {
     screen: SignUpLoginScreen
   },
+  Drawer:{
+    screen: AppDrawerNavigator
+  },
   BottomTab: {
     screen: AppDrawerNavigator
   }

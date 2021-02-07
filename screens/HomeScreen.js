@@ -41,7 +41,11 @@ export default class HomeScreen extends React.Component {
                     <ListItem.Title style = {{color: '#5C5127', fontWeight: 'bold'}}>{item.item_name}</ListItem.Title>
                     <ListItem.Subtitle style = {{color: '#DEAC35'}}>{item.description}</ListItem.Subtitle>
                 </ListItem.Content>
-                <TouchableOpacity style = {styles.view}>
+                <TouchableOpacity
+                style = {styles.view}
+                onPress ={()=>{
+                    this.props.navigation.navigate("UserDetails",{"details": item})
+                }}>
                     <Text style = {{color:'#ffff'}}>View</Text>
                 </TouchableOpacity>
           </ListItem>
