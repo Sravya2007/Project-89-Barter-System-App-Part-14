@@ -9,6 +9,7 @@ export default class UserDetailsScreen extends Component {
     super(props);
     this.state ={
     userId: firebase.auth().currentUser.email,
+    userName: '',
     exchangerId: this.props.navigation.getParam('details')["username"],
     requestId: this.props.navigation.getParam('details')["request_id"],
     itemName: this.props.navigation.getParam('details')["item_name"],
@@ -20,7 +21,7 @@ export default class UserDetailsScreen extends Component {
   }
 }
 
-  getUserDetails() {
+  getExchangerDetails() {
     db.collection('users').where('email_id','==',this.state.exchangerId).get()
     .then(snapshot=>{
       snapshot.forEach(doc=>{
@@ -51,8 +52,33 @@ addBarters = () =>{
   })
 }
 
+addNotification=()=>{
+  var message = this.state.userName + " has shown interest in exchanging the item"
+  db.collection("all_notifications").add({
+    "targeted_user_id" : this.state.exchangerId,
+    "exchanger_id" : this.state.userId,
+    "request_id" : this.state.requestId,
+    "item_name" : this.state.itemName,
+    "date" : firebase.firestore.FieldValue.serverTimestamp(),
+    "notification_status" : "unread",
+    "message" : message
+  })
+}
+
+getUserDetails=(userId)=>{
+  db.collection("users").where('email_id','==', userId).get()
+  .then((snapshot)=>{
+    snapshot.forEach((doc) => {
+      this.setState({
+        userName :doc.data().first_name + " " + doc.data().last_name
+      })
+    })
+  })
+}
+
 componentDidMount(){
-  this.getUserDetails()
+  this.getExchangerDetails()
+  this.getUserDetails(this.state.userId)
 }
   render(){
     return(
@@ -95,6 +121,7 @@ componentDidMount(){
                   style={styles.button}
                   onPress={()=>{
                     this.addBarters()
+                    this.addNotification()
                     this.props.navigation.navigate('MyBarters')
                   }}>
                 <Text style={{fontWeight:'bold', color: '#fff'}}>I want to barter</Text>

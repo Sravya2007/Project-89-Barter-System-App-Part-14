@@ -28,10 +28,6 @@ export default class HomeScreen extends React.Component {
         this.getAllItems()
     }
 
-    componentWillUnmount() {
-        this.exchangeRef();
-    }
-
     keyExtractor = (item, index) => index.toString()
 
     renderItem = ( {item, i} ) =>{
