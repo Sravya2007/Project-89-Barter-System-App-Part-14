@@ -49,7 +49,7 @@ export default class ExchangeScreen extends React.Component {
             <View style = {{
                 flex: 1
             }}>
-                <Header title = "Add Item"/>
+                <Header title = "Add Item" navigation = {this.props.navigation}/>
                 <KeyboardAvoidingView style = {styles.keyboard}>
                     <TextInput
                     style = {styles.addItem}

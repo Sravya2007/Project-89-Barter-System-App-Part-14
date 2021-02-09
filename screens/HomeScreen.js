@@ -51,7 +51,7 @@ export default class HomeScreen extends React.Component {
     render() {
         return(
         <View style = {{flex: 1, backgroundColor: '#FFE0B2'}}>
-            <Header title = "Home"/>
+            <Header title = "Home" navigation = {this.props.navigation}/>
             <View style = {{flex: 1}}>
             {
                 this.state.allItems.length === 0
