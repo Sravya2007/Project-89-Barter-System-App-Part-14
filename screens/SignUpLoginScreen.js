@@ -29,7 +29,8 @@ export default class WelcomeScreen extends Component {
          last_name:this.state.lastName,
          contact:this.state.contact,
          email_id:this.state.emailId,
-         address:this.state.address
+         address:this.state.address,
+         isExchangeRequestActive: false
        })
        return  Alert.alert(
             'User added successfully',
@@ -38,7 +39,7 @@ export default class WelcomeScreen extends Component {
               {text: 'OK', onPress: () => this.setState({
                 "isModalVisible" : false
               })
-              },
+              }
             ]
         );
      })
