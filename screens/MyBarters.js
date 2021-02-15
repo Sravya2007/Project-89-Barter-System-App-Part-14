@@ -121,7 +121,7 @@ export default class MyBartersScreen extends Component {
              this.state.allBarters.length === 0
              ?(
                <View style={styles.subtitle}>
-                 <Text style={{ fontSize: 20}}>List Of All Barters</Text>
+                 <Text style={{ fontSize: 25 }}>List Of All Barters</Text>
                </View>
              )
              :(
