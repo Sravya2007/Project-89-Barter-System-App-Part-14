@@ -14,7 +14,8 @@ export default class WelcomeScreen extends Component {
       address:'',
       contact:'',
       confirmPassword:'',
-      isModalVisible:'false'
+      isModalVisible:'false',
+      currencyCode: ''
     }
   }
 
@@ -30,7 +31,8 @@ export default class WelcomeScreen extends Component {
          contact:this.state.contact,
          email_id:this.state.emailId,
          address:this.state.address,
-         isExchangeRequestActive: false
+         isExchangeRequestActive: false,
+         currencyCode: this.state.currencyCode
        })
        return  Alert.alert(
             'User added successfully',
@@ -145,7 +147,15 @@ showModal = () =>{
                 confirmPassword: text
               })
             }}
-          />
+          /><TextInput
+          style = {styles.loginBox}
+          placeholder = {"Your country's currency code"}
+          maxLength = {8}
+          onChangeText={(text)=>{
+            this.setState({
+              currencyCode: text
+            })
+          }}/>
           <View style={styles.modalBackButton}>
             <TouchableOpacity
               style={[styles.button,{marginBottom:20, marginTop:20}]}

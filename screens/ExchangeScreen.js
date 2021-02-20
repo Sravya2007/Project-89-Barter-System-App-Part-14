@@ -14,7 +14,10 @@ export default class ExchangeScreen extends React.Component {
             requestId: '',
             requestStatus: '',
             docId: '',
-            isExchangeRequestActive: ''
+            isExchangeRequestActive: '',
+            currencyCode: '',
+            value: '',
+            itemValue: ''
 
         }
     }
@@ -34,7 +37,8 @@ export default class ExchangeScreen extends React.Component {
                         requestId: doc.data().request_id,
                         itemName: doc.data().item_name,
                         requestStatus: doc.data().request_status,
-                        docId: doc.id
+                        docId: doc.id,
+                        value: doc.data().item_value
                     })
                 }
             })
@@ -48,7 +52,8 @@ export default class ExchangeScreen extends React.Component {
             querySnapshot.forEach(doc => {
                 this.setState({
                     isExchangeRequestActive: doc.data().isExchangeRequestActive,
-                    userDocId: doc.id
+                    userDocId: doc.id,
+                    currencyCode: doc.data().currency_code
                 })
             })
         })
@@ -57,6 +62,7 @@ export default class ExchangeScreen extends React.Component {
     componentDidMount() {
         this.getExchangeRequest();
         this.getIsExchangeRequestActive();
+        this.getData()
     }
 
     updateRequestStatus=()=>{
@@ -107,6 +113,7 @@ export default class ExchangeScreen extends React.Component {
             description: description,
             request_id: randomRequestId,
             request_status: 'requested',
+            item_value: this.state.value,
             date: firebase.firestore.FieldValue.serverTimestamp()
         })
 
@@ -124,7 +131,8 @@ export default class ExchangeScreen extends React.Component {
 
         this.setState({
             itemName: '',
-            description: ''
+            description: '',
+            itemValue: ''
         })
 
         return Alert.alert(
@@ -149,6 +157,22 @@ export default class ExchangeScreen extends React.Component {
         })
     }
 
+    getData() {
+        fetch("http://data.fixer.io/api/latest?access_key=1f7dd48123a05ae588283b5e13fae944&format=1")
+        .then(response =>{
+            return response.json();
+        })
+        .then(responseData =>{
+            var currencyCode = this.state.currencyCode
+            var currency = responseData.rates.INR
+            var value = 69/currency
+            this.setState({
+                itemValue: value
+            })
+            console.log(value)
+        })
+    }
+
     render() {
         if(this.state.isExchangeRequestActive === true) {
             return(
@@ -156,9 +180,12 @@ export default class ExchangeScreen extends React.Component {
                     <Header title = "Requested Item" navigation = {this.props.navigation}/>
                     <View style={{borderWidth: 0.3, borderColor: '#5C5127', justifyContent: 'center', alignItems: 'center', padding: 20, margin: 20, backgroundColor: '#FFEDA6', marginTop: 100}}>
                         <Text style = {{color: '#5C5127', fontSize: 20}}>Item Name: {this.state.itemName}</Text>
-                        </View>
-                        <View style={{borderWidth: 0.3, justifyContent: 'center', alignItems: 'center', padding: 20, margin: 20, backgroundColor: '#FFEDA6', marginTop: 50}}>
+                    </View>
+                    <View style={{borderWidth: 0.3, borderColor: '#5C5127', justifyContent: 'center', alignItems: 'center', padding: 20, margin: 20, backgroundColor: '#FFEDA6', marginTop: 50}}>
                         <Text style = {{color: '#5C5127', fontSize: 20}}>Exchange Status: {this.state.requestStatus}</Text>
+                    </View>
+                    <View style={{borderWidth: 0.3, borderColor: '#5C5127', justifyContent: 'center', alignItems: 'center', padding: 20, margin: 20, backgroundColor: '#FFEDA6', marginTop: 50}}>
+                        <Text style = {{color: '#5C5127', fontSize: 20}}>Item Value: {this.state.value}</Text>
                     </View>
                     <TouchableOpacity
                     style={{
@@ -215,6 +242,17 @@ export default class ExchangeScreen extends React.Component {
                             })
                         }}
                         value = {this.state.description}/>
+                        <TextInput
+                        style={styles.addItem}
+                        placeholder ={"Item Value"}
+                        maxLength ={8}
+                        onChangeText={(text)=>{
+                          this.setState({
+                            value: text
+                          })
+                        }}
+                        value={this.state.value}
+                      />
                         <TouchableOpacity
                         style = {styles.button}
                         onPress = {() =>{
