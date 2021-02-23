@@ -3,7 +3,8 @@ import { View, Text,TouchableOpacity,ScrollView,FlatList,StyleSheet } from 'reac
 import { ListItem } from 'react-native-elements'
 import Header from '../components/Header.js';
 import firebase from 'firebase';
-import db from '../config.js'
+import db from '../config.js';
+import { RFValue } from "react-native-responsive-fontsize";
 
 export default class MyBartersScreen extends Component {
   static navigationOptions = { header: null };
@@ -121,7 +122,7 @@ export default class MyBartersScreen extends Component {
              this.state.allBarters.length === 0
              ?(
                <View style={styles.subtitle}>
-                 <Text style={{ fontSize: 25 }}>List Of All Barters</Text>
+                 <Text style={{ fontSize: RFValue(25) }}>List Of All Barters</Text>
                </View>
              )
              :(
@@ -154,7 +155,7 @@ const styles = StyleSheet.create({
   },
   subtitle :{
     flex:1,
-    fontSize: 20,
+    fontSize: RFValue(20),
     justifyContent:'center',
     alignItems:'center'
   }

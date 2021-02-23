@@ -5,6 +5,7 @@ import firebase from 'firebase';
 import Header from '../components/Header';
 import SwipeableFlatlist from '../components/SwipeableFlatlist';
 import db from '../config';
+import { RFValue } from "react-native-responsive-fontsize";
 
 export default class Notifications extends Component{
   constructor(props) {
@@ -44,7 +45,7 @@ export default class Notifications extends Component{
   renderItem = ({item,index}) =>{
       return (
         <ListItem key = {index} bottomDivider containerStyle = {{backgroundColor: '#FFEDA6', marginTop: 20}}>
-            <ListItem.Chevron name = "gift" type = "feather" color = '#5C5127' size = {30}/>
+            <ListItem.Chevron name = "gift" type = "feather" color = '#5C5127' size = {RFValue(30)}/>
             <ListItem.Content>
               <ListItem.Title style = {{color: '#5C5127', fontWeight: 'bold'}}>{item.item_name}</ListItem.Title>
               <ListItem.Subtitle style = {{color: '#DEAC35'}}>{item.message}</ListItem.Subtitle>
@@ -65,7 +66,7 @@ export default class Notifications extends Component{
             this.state.allNotifications.length === 0
             ?(
               <View style={{flex:1, justifyContent:'center', alignItems:'center'}}>
-                <Text style={{fontSize:25}}>You have no notifications</Text>
+                <Text style={{fontSize:RFValue(25)}}>You have no notifications</Text>
               </View>
             )
             :(

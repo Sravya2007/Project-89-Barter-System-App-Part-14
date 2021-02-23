@@ -3,6 +3,7 @@ import { Header, Icon, Badge } from 'react-native-elements';
 import { View, Text, StyeSheet ,Alert} from 'react-native';
 import firebase from 'firebase';
 import db from '../config';
+import { RFValue } from "react-native-responsive-fontsize";
 
 export default class MyHeader extends Component{
     constructor(props){
@@ -34,12 +35,12 @@ export default class MyHeader extends Component{
           <Icon name='bell'
             type='font-awesome'
             color='#fff'
-            size={25}
+            size={RFValue(25)}
             onPress={() =>this.props.navigation.navigate('Notifications')}/>
            <Badge
             value={this.state.value}
             status = "error"
-            containerStyle={{ position: 'absolute', top: -4, right: -4 }}/>
+            containerStyle={{ position: 'absolute', top: RFValue(-4), right: RFValue(-4) }}/>
         </View>
       )
     }
@@ -47,8 +48,8 @@ export default class MyHeader extends Component{
     render(){
       return(
           <Header
-            leftComponent={<Icon name='bars' type='font-awesome' color='#fff'  onPress={() => this.props.navigation.toggleDrawer()}/>}
-            centerComponent={{ text: this.props.title, style: { color: '#fff', fontSize:30, fontWeight:"bold" } }}
+            leftComponent={<Icon name='bars' type='font-awesome' color='#fff' size={RFValue(25)} onPress={() => this.props.navigation.toggleDrawer()}/>}
+            centerComponent={{ text: this.props.title, style: { color: '#fff', fontSize:RFValue(25), fontWeight:"bold" } }}
             backgroundColor = "#F69400"
             rightComponent={<this.BellIconWithBadge {...this.props}/>}
           />

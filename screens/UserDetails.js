@@ -3,6 +3,7 @@ import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import{ Card, Header, Icon } from 'react-native-elements';
 import firebase from 'firebase';
 import db from '../config.js';
+import { RFValue } from "react-native-responsive-fontsize";
 
 export default class UserDetailsScreen extends Component {
   constructor(props){
@@ -85,31 +86,31 @@ componentDidMount(){
       <View style={styles.container}>
         <View style={{flex:0.1}}>
           <Header
-            leftComponent ={<Icon name='arrow-left' type='feather' color='#fff'  onPress={() => this.props.navigation.goBack()}/>}
-            centerComponent={{ text:"Exchange Items", style: { color: '#fff', fontSize: 29, fontWeight:"bold" }}}
+            leftComponent ={<Icon name='arrow-left' type='feather' color='#fff' size={RFValue(25)} onPress={() => this.props.navigation.goBack()}/>}
+            centerComponent={{ text:"Exchange Items", style: { color: '#fff', fontSize: RFValue(25), fontWeight:"bold" }}}
             backgroundColor = "#F69400"
           />
         </View>
         <View style={{flex:0.3, marginTop: 40}}>
           <Card containerStyle = {{backgroundColor: '#FFEDA6'}}>
             <Card containerStyle = {{backgroundColor: "#F69400"}}>
-              <Text style={{fontWeight: 'bold', color: '#fff'}}>Item Name: {this.state.itemName}</Text>
+              <Text style={{fontWeight: 'bold', color: '#fff', fontSize: RFValue(20)}}>Item Name: {this.state.itemName}</Text>
             </Card>
             <Card containerStyle = {{backgroundColor: "#F69400"}}>
-              <Text style={{fontWeight: 'bold', color: '#fff'}}>Reason: {this.state.reason_for_requesting}</Text>
+              <Text style={{fontWeight: 'bold', color: '#fff', fontSize: RFValue(20)}}>Reason: {this.state.reason_for_requesting}</Text>
             </Card>
           </Card>
         </View>
         <View style={{flex: 0.3}}>
           <Card containerStyle = {{backgroundColor: '#FFEDA6'}}>
             <Card containerStyle = {{backgroundColor: "#F69400"}}>
-              <Text style={{fontWeight:'bold', color: '#fff'}}>Name: {this.state.exchangerName}</Text>
+              <Text style={{fontWeight:'bold', color: '#fff', fontSize: RFValue(20)}}>Name: {this.state.exchangerName}</Text>
             </Card>
             <Card containerStyle = {{backgroundColor: "#F69400"}}>
-              <Text style={{fontWeight:'bold', color: '#fff'}}>Contact: {this.state.exchangerContact}</Text>
+              <Text style={{fontWeight:'bold', color: '#fff', fontSize: RFValue(20)}}>Contact: {this.state.exchangerContact}</Text>
             </Card>
             <Card containerStyle = {{backgroundColor: "#F69400"}}>
-              <Text style={{fontWeight:'bold', color: '#fff'}}>Address: {this.state.exchangerAddress}</Text>
+              <Text style={{fontWeight:'bold', color: '#fff', fontSize: RFValue(20)}}>Address: {this.state.exchangerAddress}</Text>
             </Card>
           </Card>
         </View>
@@ -124,7 +125,7 @@ componentDidMount(){
                     this.addNotification()
                     this.props.navigation.navigate('MyBarters')
                   }}>
-                <Text style={{fontWeight:'bold', color: '#fff'}}>I want to barter</Text>
+                <Text style={{fontWeight:'bold', color: '#fff', fontSize: RFValue(20)}}>I want to barter</Text>
               </TouchableOpacity>
             )
             : null
@@ -162,6 +163,6 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.44,
     shadowRadius: 10.32,
     elevation: 16,
-    marginTop:20
+    marginTop: RFValue(30)
     }
 })

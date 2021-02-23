@@ -3,6 +3,7 @@ import { StyleSheet, Text, View, TextInput, TouchableOpacity, KeyboardAvoidingVi
 import db from '../config';
 import firebase from 'firebase';
 import Header from '../components/Header';
+import { RFValue } from "react-native-responsive-fontsize";
 
 export default class ExchangeScreen extends React.Component {
     constructor() {
@@ -178,20 +179,20 @@ export default class ExchangeScreen extends React.Component {
             return(
                 <View style = {{flex:1, backgroundColor: '#FFE0B2'}}>
                     <Header title = "Requested Item" navigation = {this.props.navigation}/>
-                    <View style={{borderWidth: 0.3, borderColor: '#5C5127', justifyContent: 'center', alignItems: 'center', padding: 20, margin: 20, backgroundColor: '#FFEDA6', marginTop: 100}}>
-                        <Text style = {{color: '#5C5127', fontSize: 20}}>Item Name: {this.state.itemName}</Text>
+                    <View style={{borderWidth: 0.3, borderColor: '#5C5127', justifyContent: 'center', alignItems: 'center', padding: RFValue(20), margin: RFValue(20), backgroundColor: '#FFEDA6', marginTop: RFValue(100)}}>
+                        <Text style = {{color: '#5C5127', fontSize: RFValue(20)}}>Item Name: {this.state.itemName}</Text>
                     </View>
-                    <View style={{borderWidth: 0.3, borderColor: '#5C5127', justifyContent: 'center', alignItems: 'center', padding: 20, margin: 20, backgroundColor: '#FFEDA6', marginTop: 50}}>
-                        <Text style = {{color: '#5C5127', fontSize: 20}}>Exchange Status: {this.state.requestStatus}</Text>
+                    <View style={{borderWidth: 0.3, borderColor: '#5C5127', justifyContent: 'center', alignItems: 'center', padding: RFValue(20), margin: RFValue(20), backgroundColor: '#FFEDA6', marginTop: RFValue(50)}}>
+                        <Text style = {{color: '#5C5127', fontSize: RFValue(20)}}>Exchange Status: {this.state.requestStatus}</Text>
                     </View>
-                    <View style={{borderWidth: 0.3, borderColor: '#5C5127', justifyContent: 'center', alignItems: 'center', padding: 20, margin: 20, backgroundColor: '#FFEDA6', marginTop: 50}}>
-                        <Text style = {{color: '#5C5127', fontSize: 20}}>Item Value: {this.state.value}</Text>
+                    <View style={{borderWidth: 0.3, borderColor: '#5C5127', justifyContent: 'center', alignItems: 'center', padding: RFValue(20), margin: RFValue(20), backgroundColor: '#FFEDA6', marginTop: RFValue(50)}}>
+                        <Text style = {{color: '#5C5127', fontSize: RFValue(20)}}>Item Value: {this.state.value}</Text>
                     </View>
                     <TouchableOpacity
                     style={{
-                        width:300,
-                        height:50,
-                        marginTop: 50,
+                        width: RFValue(300),
+                        height: RFValue(50),
+                        marginTop: RFValue(50),
                         justifyContent:'center',
                         alignItems:'center',
                         alignSelf: 'center',
@@ -211,7 +212,7 @@ export default class ExchangeScreen extends React.Component {
                         this.updateRequestStatus();
                         this.receivedItems(this.state.itemName)
                     }}>
-                        <Text style = {{color:'#fff', fontWeight:'200', fontSize:20}}>I received the item</Text>
+                        <Text style = {{color: '#fff', fontWeight: '200', fontSize: RFValue(20)}}>I received the item</Text>
                     </TouchableOpacity>
                 </View>
             )
@@ -258,7 +259,7 @@ export default class ExchangeScreen extends React.Component {
                         onPress = {() =>{
                             this.addItem(this.state.itemName, this.state.description)
                         }}>
-                            <Text style = {{color: '#fff', fontSize: 20}}>Add Item</Text>
+                            <Text style = {{color: '#fff', fontSize: RFValue(20)}}>Add Item</Text>
                         </TouchableOpacity>
                     </KeyboardAvoidingView>
                 </View>
@@ -284,7 +285,7 @@ const styles = StyleSheet.create({
       marginTop:20,
       padding:10,
       backgroundColor: '#FFEDA6',
-      fontSize: 20,
+      fontSize: RFValue(20),
       color: '#806F2D'
     },
     button:{

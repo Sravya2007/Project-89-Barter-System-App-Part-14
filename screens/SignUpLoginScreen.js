@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { View, StyleSheet, Text, Image, ScrollView, KeyboardAvoidingView, Alert, Modal, TouchableOpacity, TextInput } from 'react-native';
 import db from '../config';
 import firebase from 'firebase';
+import { RFValue } from "react-native-responsive-fontsize";
+import {Input} from 'react-native-elements';
 
 export default class WelcomeScreen extends Component {
   constructor(){
@@ -79,8 +81,11 @@ showModal = () =>{
           <Text
             style={styles.modalTitle}
             >Registration</Text>
-          <TextInput
-            style={styles.loginBox}
+          <Input
+            containerStyle = {styles.loginBox}
+            inputContainerStyle = {{borderBottomWidth: 1.5, borderColor : '#F69400'}}
+            inputStyle = {{color: '#DEAC35', fontSize: RFValue(20)}}
+            placeholderTextColor = {'#F69400'}
             placeholder ={"First Name"}
             maxLength ={10}
             onChangeText={(text)=>{
@@ -89,8 +94,11 @@ showModal = () =>{
               })
             }}
           />
-          <TextInput
-            style={styles.loginBox}
+          <Input
+            containerStyle = {styles.loginBox}
+            inputContainerStyle = {{borderBottomWidth: 1.5, borderColor : '#F69400'}}
+            inputStyle = {{color: '#DEAC35', fontSize: RFValue(20)}}
+            placeholderTextColor = {'#F69400'}
             placeholder ={"Last Name"}
             maxLength ={15}
             onChangeText={(text)=>{
@@ -99,8 +107,11 @@ showModal = () =>{
               })
             }}
           />
-          <TextInput
-            style={styles.loginBox}
+          <Input
+            containerStyle = {styles.loginBox}
+            inputContainerStyle = {{borderBottomWidth: 1.5, borderColor : '#F69400'}}
+            inputStyle = {{color: '#DEAC35', fontSize: RFValue(20)}}
+            placeholderTextColor = {'#F69400'}
             placeholder ={"Contact"}
             maxLength ={10}
             keyboardType={'numeric'}
@@ -110,8 +121,11 @@ showModal = () =>{
               })
             }}
           />
-          <TextInput
-            style={styles.loginBox}
+          <Input
+            containerStyle = {styles.loginBox}
+            inputContainerStyle = {{borderBottomWidth: 1.5, borderColor : '#F69400'}}
+            inputStyle = {{color: '#DEAC35', fontSize: RFValue(20)}}
+            placeholderTextColor = {'#F69400'}
             placeholder ={"Address"}
             multiline = {true}
             onChangeText={(text)=>{
@@ -120,8 +134,11 @@ showModal = () =>{
               })
             }}
           />
-          <TextInput
-            style={styles.loginBox}
+          <Input
+            containerStyle = {styles.loginBox}
+            inputContainerStyle = {{borderBottomWidth: 1.5, borderColor : '#F69400'}}
+            inputStyle = {{color: '#DEAC35', fontSize: RFValue(20)}}
+            placeholderTextColor = {'#F69400'}
             placeholder ={"Email"}
             keyboardType ={'email-address'}
             onChangeText={(text)=>{
@@ -129,8 +146,11 @@ showModal = () =>{
                 emailId: text
               })
             }}
-          /><TextInput
-            style={styles.loginBox}
+          /><Input
+          containerStyle = {styles.loginBox}
+          inputContainerStyle = {{borderBottomWidth: 1.5, borderColor : '#F69400'}}
+          inputStyle = {{color: '#DEAC35', fontSize: RFValue(20)}}
+          placeholderTextColor = {'#F69400'}
             placeholder ={"Password"}
             secureTextEntry = {true}
             onChangeText={(text)=>{
@@ -138,8 +158,11 @@ showModal = () =>{
                 password: text
               })
             }}
-          /><TextInput
-            style={styles.loginBox}
+          /><Input
+          containerStyle = {styles.loginBox}
+          inputContainerStyle = {{borderBottomWidth: 1.5, borderColor : '#F69400'}}
+          inputStyle = {{color: '#DEAC35', fontSize: RFValue(20)}}
+          placeholderTextColor = {'#F69400'}
             placeholder ={"Confirm Password"}
             secureTextEntry = {true}
             onChangeText={(text)=>{
@@ -147,8 +170,11 @@ showModal = () =>{
                 confirmPassword: text
               })
             }}
-          /><TextInput
-          style = {styles.loginBox}
+          /><Input
+          containerStyle = {styles.loginBox}
+          inputContainerStyle = {{borderBottomWidth: 1.5, borderColor : '#F69400'}}
+          inputStyle = {{color: '#DEAC35', fontSize: RFValue(20)}}
+          placeholderTextColor = {'#F69400'}
           placeholder = {"Your country's currency code"}
           maxLength = {8}
           onChangeText={(text)=>{
@@ -158,7 +184,7 @@ showModal = () =>{
           }}/>
           <View style={styles.modalBackButton}>
             <TouchableOpacity
-              style={[styles.button,{marginBottom:20, marginTop:20}]}
+              style={[styles.button,{marginBottom:RFValue(20), marginTop:RFValue(20)}]}
               onPress={()=>
                 this.userSignUp(this.state.emailId, this.state.password, this.state.confirmPassword)
               }
@@ -193,22 +219,35 @@ showModal = () =>{
         <View style={{justifyContent:'center', alignItems:'center'}}>
         <Image source = {require('../assets/BarterLogo.png')} style = {{width: 250, height: 150}}/>
           <Text style={styles.title}>Barter System</Text>
+          <Text style={styles.subtitle}>A Trading Method</Text>
         </View>
         <View>
-            <TextInput
-            style={styles.loginBox}
-            placeholder="abc@example.com"
-            keyboardType ='email-address'
-            onChangeText={(text)=>{
+            <Input
+            containerStyle = {styles.loginBox}
+            inputContainerStyle = {{borderBottomWidth: 1.5, borderColor : '#F69400'}}
+            inputStyle = {{color: '#DEAC35', fontSize: RFValue(20)}}
+            labelStyle = {{color: '#DEAC35'}}
+            label = 'Your email address'
+            placeholder = "email@address.com"
+            placeholderTextColor = {'#F69400'}
+            leftIcon = {{ type: 'font-awesome', name: 'envelope', color: '#F69400' }}
+            keyboardType = 'email-address'
+            onChangeText = {(text)=>{
               this.setState({
                 emailId: text
               })
             }}
           />
-          <TextInput
-          style={styles.loginBox}
+          <Input
+          containerStyle={styles.loginBox}
+          inputContainerStyle={{borderBottomWidth: 1.5, borderColor : '#F69400'}}
+          inputStyle = {{color: '#DEAC35', fontSize: RFValue(20)}}
           secureTextEntry = {true}
-          placeholder="Enter Password"
+          label = 'Password'
+          labelStyle = {{color: '#DEAC35'}}
+          placeholder="Password"
+          placeholderTextColor = {'#F69400'}
+          leftIcon={{ type: 'font-awesome', name: 'lock', color: '#F69400' }}
           onChangeText={(text)=>{
             this.setState({
               password: text
@@ -216,7 +255,7 @@ showModal = () =>{
           }}
         />
         <TouchableOpacity
-           style={[styles.button,{marginBottom:20, marginTop:20}]}
+           style={[styles.button,{marginBottom:RFValue(20), marginTop:RFValue(50)}]}
            onPress = {()=>{
              this.userLogin(this.state.emailId, this.state.password)
            }}
@@ -253,25 +292,27 @@ const styles = StyleSheet.create({
     alignItems:'center'
   },
   title:{
-    fontSize:50,
+    fontSize:RFValue(50),
     fontWeight:'300',
-    marginTop:50,
+    marginTop:RFValue(25),
     color : '#F69400'
+  },
+  subtitle: {
+    fontSize:RFValue(20),
+    color : '#DEAC35'
   },
   loginBox:{
     width: 300,
     height: 40,
-    borderBottomWidth: 1.5,
-    borderColor : '#F69400',
-    fontSize: 20,
-    margin:15,
-    paddingLeft:10
+    fontSize: RFValue(20),
+    margin:RFValue(15)
   },
   button:{
     width:300,
     height:50,
     justifyContent:'center',
     alignItems:'center',
+    alignSelf: 'center',
     borderRadius:25,
     backgroundColor:"#DEAC35",
     shadowColor: "#000",
@@ -286,7 +327,7 @@ const styles = StyleSheet.create({
   buttonText:{
     color:'#ffff',
     fontWeight:'200',
-    fontSize:20
+    fontSize:RFValue(20)
   },
   buttonContainer:{
     flex: 1,
@@ -300,9 +341,9 @@ const styles = StyleSheet.create({
   modalTitle:{
     justifyContent: 'center',
     alignSelf: 'center',
-    fontSize: 30,
+    fontSize: RFValue(30),
     color: '#F69400',
-    margin: 30
+    margin: RFValue(30)
   },
   modalContainer:{
     flex: 1,
@@ -310,9 +351,9 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: "#ffff",
-    marginRight: 30,
-    marginLeft: 30,
-    marginTop: 80,
-    marginBottom: 80
+    marginRight: RFValue(30),
+    marginLeft: RFValue(30),
+    marginTop: RFValue(80),
+    marginBottom: RFValue(80)
   }
 })

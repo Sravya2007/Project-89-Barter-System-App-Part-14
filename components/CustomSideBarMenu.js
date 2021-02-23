@@ -5,6 +5,7 @@ import db from '../config';
 import firebase from 'firebase';
 import * as ImagePicker from "expo-image-picker";
 import { Avatar } from "react-native-elements";
+import { RFValue } from 'react-native-responsive-fontsize';
 
 export default class CustomSideBarMenu extends Component{
   constructor() {
@@ -90,19 +91,20 @@ export default class CustomSideBarMenu extends Component{
             source = {{
               uri: this.state.image
             }}
-            size = {150}
+            icon = {{type: 'font-awesome', color: '#F69400'}}
+            size = {RFValue(150)}
             onPress = {() => this.selectPicture()}
-            containerStyle = {{marginTop: 50}}
+            containerStyle = {{marginTop: RFValue(50)}}
             overlayContainerStyle = {{backgroundColor: '#FFE0B2'}}>
-              <Avatar.Accessory size = {50} style = {{backgroundColor: '#FFEDA6'}} iconStyle = {{color: '#000'}}/>
+              <Avatar.Accessory size = {RFValue(50)} style = {{backgroundColor: '#FFEDA6'}} iconStyle = {{color: '#000'}}/>
             </Avatar>
 
-          <Text style={{ fontWeight: "bold", fontSize: 25, color: '#fff', marginTop: 30 }}>
+          <Text style={{ fontWeight: "bold", fontSize: RFValue(25), color: '#fff', marginTop: RFValue(30) }}>
             {this.state.name}
           </Text>
         </View>
         <View style = {styles.drawer}>
-          <DrawerItems {...this.props} labelStyle = {{color: '#fff', fontSize: 15}}/>
+          <DrawerItems {...this.props} labelStyle = {{color: '#fff', fontSize: RFValue(15)}}/>
         </View>
         <View style={styles.logOut}>
           <TouchableOpacity style = {styles.button}
@@ -125,26 +127,26 @@ var styles = StyleSheet.create({
   },
   drawer: {
     flex: 0.8,
-    marginTop: 50
+    marginTop: RFValue(50)
   },
   logOut: {
     flex: 0.2,
     justifyContent: 'flex-end',
-    paddingBottom: 30
+    paddingBottom: RFValue(30)
   },
   button: {
-    height: 30,
-    padding: 20,
+    height: RFValue(30),
+    padding: RFValue(20),
     width: '100%',
     justifyContent: 'center'
   },
   text: {
-    fontSize: 20,
+    fontSize: RFValue(20),
     fontWeight: 'bold',
     color: '#fff'
   },
   logOutText: {
-    fontSize: 30,
+    fontSize: RFValue(30),
     fontWeight: "bold"
   }
 })

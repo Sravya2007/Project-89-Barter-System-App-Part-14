@@ -3,6 +3,7 @@ import { Animated, Dimensions, StyleSheet, Text, View } from "react-native";
 import { ListItem } from "react-native-elements";
 import { SwipeListView } from "react-native-swipe-list-view";
 import db from "../config";
+import { RFValue } from "react-native-responsive-fontsize";
 
 export default class SwipeableFlatlist extends Component {
   constructor(props) {
@@ -33,8 +34,8 @@ export default class SwipeableFlatlist extends Component {
 
   renderItem = data => (
     <Animated.View>
-        <ListItem bottomDivider containerStyle = {{backgroundColor: '#FFEDA6', marginTop: 20}}>
-            <ListItem.Chevron name = "gift" type = "feather" color = '#5C5127' size = {30}/>
+        <ListItem bottomDivider containerStyle = {{backgroundColor: '#FFEDA6', marginTop: RFValue(20)}}>
+            <ListItem.Chevron name = "gift" type = "feather" color = '#5C5127' size = {RFValue(30)}/>
             <ListItem.Content>
             <ListItem.Title style = {{color: '#5C5127', fontWeight: 'bold'}}>{data.item.item_name}</ListItem.Title>
             <ListItem.Subtitle style = {{color: '#DEAC35'}}>{data.item.message}</ListItem.Subtitle>
@@ -44,8 +45,8 @@ export default class SwipeableFlatlist extends Component {
   );
 
   renderHiddenItem = () => (
-    <View style={{backgroundColor: '#F69400', marginTop: 20, height: 100}}>
-        <Text style={{alignSelf: 'flex-end', margin: 30, color: '#fff', fontWeight: 'bold'}}>Mark as read</Text>
+    <View style={{backgroundColor: '#F69400', marginTop: RFValue(20), height: RFValue(100)}}>
+        <Text style={{alignSelf: 'flex-end', margin: RFValue(30), color: '#fff', fontWeight: 'bold'}}>Mark as read</Text>
     </View>
   );
 

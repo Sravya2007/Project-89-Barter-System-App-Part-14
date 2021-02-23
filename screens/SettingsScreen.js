@@ -3,6 +3,7 @@ import {StyleSheet, Text, View, TextInput, TouchableOpacity, Alert} from 'react-
 import db from '../config';
 import firebase from 'firebase';
 import Header from '../components/Header';
+import { RFValue } from "react-native-responsive-fontsize";
 
 export default class SettingsScreen extends Component{
     constructor() {
@@ -146,7 +147,7 @@ const styles = StyleSheet.create({
             marginTop: 20,
             padding: 10,
             backgroundColor: '#FFEDA6',
-            fontSize: 20,
+            fontSize: RFValue(20),
             color: '#806F2D'
         },
         address: {
@@ -159,7 +160,7 @@ const styles = StyleSheet.create({
             marginTop: 20,
             padding: 10,
             backgroundColor: '#FFEDA6',
-            fontSize: 20,
+            fontSize: RFValue(20),
             color: '#806F2D'
         },
         save: {
@@ -180,7 +181,7 @@ const styles = StyleSheet.create({
             marginTop:20
         },
         text: {
-            fontSize: 20,
+            fontSize: RFValue(20),
             fontWeight: "200",
             color: "#fff"
         }

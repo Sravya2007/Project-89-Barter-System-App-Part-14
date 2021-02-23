@@ -4,6 +4,7 @@ import db from '../config';
 import firebase from 'firebase';
 import Header from '../components/Header';
 import { ListItem } from 'react-native-elements';
+import { RFValue } from "react-native-responsive-fontsize";
 
 export default class HomeScreen extends React.Component {
     constructor() {
@@ -32,7 +33,7 @@ export default class HomeScreen extends React.Component {
 
     renderItem = ( {item, i} ) =>{
         return (
-            <ListItem key = {i} bottomDivider containerStyle = {{backgroundColor: '#FFEDA6', marginTop: 20}}>
+            <ListItem key = {i} bottomDivider containerStyle = {{backgroundColor: '#FFEDA6', marginTop: RFValue(20)}}>
                 <ListItem.Content>
                     <ListItem.Title style = {{color: '#5C5127', fontWeight: 'bold'}}>{item.item_name}</ListItem.Title>
                     <ListItem.Subtitle style = {{color: '#DEAC35'}}>{item.description}</ListItem.Subtitle>
@@ -57,7 +58,7 @@ export default class HomeScreen extends React.Component {
                 this.state.allItems.length === 0
                 ?(
                 <View style = {styles.default}>
-                    <Text style = {{fontSize: 20, color: '#5C5127', fontWeight: 'bold'}}>All requested items</Text>
+                    <Text style = {{fontSize: RFValue(20), color: '#5C5127', fontWeight: 'bold'}}>All requested items</Text>
                 </View>
                 )
                 :(
@@ -77,13 +78,13 @@ export default class HomeScreen extends React.Component {
 const styles = StyleSheet.create({
     default:{
       flex:1,
-      fontSize:20,
+      fontSize:RFValue(20),
       justifyContent:'center',
       alignItems:'center'
     },
     view:{
-      width:100,
-      height:30,
+      width:RFValue(100),
+      height:RFValue(30),
       justifyContent:'center',
       alignItems:'center',
       backgroundColor:"#F69400",
